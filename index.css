@@ -1,4 +1,144 @@
+
+
+
 body {
     min-height: 100vh;
     min-width: 100vw;
 }
+
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.2rem;
+    outline: inherit;
+    padding: 1rem;
+
+}
+
+g {
+    animation-name: writeLine;
+    animation-direction: normal;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+}
+    
+
+header {
+    background: rgb(219, 226, 236, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60vh;
+    
+}
+
+header > div {
+    background: linear-gradient(rgb(219, 226, 236, 0.6),white);
+    box-shadow: 0 -5px 5px black;
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    padding: 1rem;
+
+}
+
+
+h1 {
+    animation-name: nameReveal;
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    font-size: 3rem;
+    letter-spacing: 0.75rem;
+    text-align: center;
+    
+    
+}
+
+
+main:before {
+    box-shadow: 0 -5px 5px black;
+    content: "";
+    color: black;
+    display: block;
+    height: 3px;
+    width: 100vw;
+}
+
+nav > div {
+    display: inline-block;
+    position: relative;
+}
+
+nav svg {
+    bottom: 0;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+
+@media (min-width: 700px){
+    h1 {
+        font-size: 5rem;
+    }
+    
+}
+
+@keyframes nameReveal {
+    0% {
+        opacity: 0;
+        text-shadow: 
+    1px 10px 4px black,
+    1px 20px 4px #222,
+    1px 30px 4px #333,
+    2px 40px 4px rgba(0,0,0,0.3),
+    4px 40px 4px rgba(0,0,0,0.4),
+    6px 50px 4px rgba(0,0,0,0.6);
+        
+    }
+
+    100% {
+        opacity: 1;
+        text-shadow: 
+    1px 1px 4px black,
+    1px 1px 4px #222,
+    1px 1px 4px #333,
+    2px 2px 4px rgba(0,0,0,0.3),
+    4px 3px 4px rgba(0,0,0,0.4),
+    6px 4px 4px rgba(0,0,0,0.6);
+        
+        
+    }
+
+}
+
+@keyframes writeLine {
+    0% {
+        
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+
+
+
+
+

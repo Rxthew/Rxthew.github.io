@@ -6,15 +6,51 @@
     <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
-    <title>Portfolio website</title>
+    <title>rxthew.github.io</title>
 </head>
 <body>
     <header>
+        <div>
+            <h1>
+                Richard Thewma
+            </h1>  
+            <nav>
+                <div>
+                    <button>About</button>
+                    <svg viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
+                        <filter id="scribble_about">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="6" result="turbulentScrb"/>
+                          <feDisplacementMap in="SourceGraphic" in2="turbulentScrb" scale="1"  />
+                        </filter>
+                        <g fill="white" stroke="black" stroke-width="0.1" filter="url(#scribble_about)">
+                            <line x1=1 y1=2 x2=10 y2=3 />
+                        </g>
+                    </svg>
+                </div>
+                <div>
+                    <button>Projects</button>
+                    <svg viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
+                        <filter id="scribble_projects">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="6" result="turbulentScrb"/>
+                          <feDisplacementMap in="SourceGraphic" in2="turbulentScrb" scale="1"  />
+                        </filter>
+                        <g fill="white" stroke="black" stroke-width="0.1" filter="url(#scribble_projects)">
+                            <line x1=1 y1=2 x2=10 y2=3 />
+                        </g>
+                    </svg>
+
+                </div>
+                
+            </nav>
+        </div>
     </header>
     <main>
         <article>
+            
         </article>
         <article>
+            
+    
         </article>
     </main>
 </body>
