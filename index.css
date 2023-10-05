@@ -1,5 +1,10 @@
+html {
+    box-sizing: border-box;
+}
 
-
+*,*:before,*:after {
+    box-sizing: inherit;
+}
 
 body {
     min-height: 100vh;
@@ -89,12 +94,36 @@ nav svg {
     width: 100%;
 }
 
+.open {
+    animation: 3s ease-in-out 0s 1 normal forwards running expandHeader
 
-@media (min-width: 700px){
-    h1 {
-        font-size: 5rem;
+}
+
+.closed {
+    animation: 3s ease-in-out 0s 1 normal forwards running contractHeader
+
+
+}
+
+@keyframes contractHeader {
+    0% {
+        padding-bottom: 60vh;
     }
-    
+
+    100% {
+        padding-bottom: 0;
+    }
+}
+
+
+@keyframes expandHeader {
+    0% {
+        padding-bottom: 0;
+    }
+
+    100% {
+        padding-bottom: 60vh;
+    }
 }
 
 @keyframes nameReveal {
@@ -137,6 +166,12 @@ nav svg {
 }
 
 
+@media (min-width: 700px){
+    h1 {
+        font-size: 5rem;
+    }
+    
+}
 
 
 
