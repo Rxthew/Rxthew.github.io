@@ -158,26 +158,23 @@ summary::marker {
 }
 
 
-#about nav {
-    display: flex;
-    max-width: 100%;
-    overflow: scroll;
+#about div > details + p {
+    animation: 0.25s linear 0s 1 normal forwards running contractParagraph;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-#about nav > details{
-    border: 1px solid;
-    padding: 1rem;
-    order: 2
+#about div > details[open] + p {
+    animation: 0.25s linear 0s 1 normal forwards running expandParagraph;
     
 }
 
-#about nav > details[open]{
-    background-color: green;
-    flex-grow: 1;
-    flex-shrink: 0;
-    order: 1
 
-  
+#about nav {
+    display: flex;
+    max-width: 100%;
+    overflow-x: scroll;
 }
 
 
@@ -203,12 +200,15 @@ summary::marker {
 
 
 #devices > div:first-child {
+    aspect-ratio: 0.5;
     border: 2px solid;
     border-radius: 10px;
     box-shadow: 0.5rem 0.5rem;
     margin: 1rem;
-    max-width: min(150px,100%);
-    padding: 2px
+    width: min(150px,100%);
+    overflow: hidden;
+    padding: 2px;
+    position: relative;
    
 }
 
@@ -223,18 +223,24 @@ summary::marker {
     width: 25%;
   }
 
+#devices #mobile {
+    aspect-ratio: 0.5;
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
 
-
-#devices > div:first-child > img {
+#devices #mobile > img {
     border: 1px solid;
     border-radius: 3px;
     margin-top: 4px;
     max-width: 100%;
+    position: absolute;
 }
 
 #devices > div:last-child {
     min-height: 200px;
-    max-width: min(700px,100%);
+    width: min(650px,100%);
 }
 
 #devices #screen {  
@@ -245,6 +251,7 @@ summary::marker {
     border-style: solid;
     border-width: 6px 1.5px 0 1.5px;
     margin: 0 auto;
+    overflow: hidden;
     padding-bottom: 6px;
     width: min(80%,560px);
   }
@@ -255,6 +262,7 @@ summary::marker {
     border-radius: 5px;
     height: auto;
     max-width: 100%;
+    position: absolute;
   }
 
 
@@ -299,6 +307,58 @@ summary::marker {
  #project_details button:last-child {
     border-radius: 0 0 60px 0;
  }
+
+ @keyframes contractParagraph {
+    0% {
+        background: linear-gradient(95deg,white,rgb(219, 226, 236));
+        opacity: 1;
+        max-height: 100rem;
+        padding: 2rem;
+        transform: rotate(5deg);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        background-color: transparent;
+        display: block;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        transform: none;
+
+    }
+}
+
+@keyframes expandParagraph {
+    0% {
+        background-color: transparent;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        transform: none;
+        
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        background: linear-gradient(95deg,white,rgb(219, 226, 236));  
+        max-height: 100rem;
+        opacity: 1;
+        padding: 2rem;
+        transform: rotate(5deg);
+
+        
+
+    }
+}
 
 
 @keyframes contractHeader {
