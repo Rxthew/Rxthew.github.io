@@ -17,7 +17,7 @@
             <nav>
                 <div>
                     <button>About</button>
-                    <svg viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="none" viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
                         <filter id="scribble_about">
                           <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="6" result="turbulentScrb"/>
                           <feDisplacementMap in="SourceGraphic" in2="turbulentScrb" scale="1"  />
@@ -29,7 +29,7 @@
                 </div>
                 <div>
                     <button>Projects</button>
-                    <svg viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="none" viewBox="0 0 10 3" xmlns="http://www.w3.org/2000/svg">
                         <filter id="scribble_projects">
                           <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="6" result="turbulentScrb"/>
                           <feDisplacementMap in="SourceGraphic" in2="turbulentScrb" scale="1"  />
@@ -38,61 +38,132 @@
                             <line x1=1 y1=2 x2=10 y2=3 />
                         </g>
                     </svg>
-
                 </div>
-                
             </nav>
         </div>
     </header>
     <main>
-        <article id="about"> 
-            <h2>About</h2>
-            <section>
-                <h3>What I do:</h3>
-                <p>
-                    Hi. I spend my days making things. I can make things on screens. This is not very useful, so I also learned to save the things we make on screens. This is OK, but it's pretty lonely
-                    so I also learned how to have my thing eat other things stuck in the spider's web. This is pretty selfish though, so I rounded it off by making sure my thing can be eaten by other things as well.
-                    Now I am full, but I want to make bigger things. I am sure you want to help out so drop me a line at richard.theuma@gmail.com.
-                </p> 
-            </section>
-            <section>
-                <details>
-                    <summary>Need more? </summary> 
-                        <nav>
-                            <div>
-                                <details>
-                                    <summary>Background</summary>
-                                </details>
-                                <p>
-                                    Hi. I spend my days making things. I can make things on screens. This is not very useful, so I also learned to save the things we make on screens. This is OK, but it's pretty lonely
-                                    so I also learned how to have my thing eat other things stuck in the spider's web. This is pretty selfish though, so I rounded it off by making sure my thing can be eaten by other things as well.
-                                    Now I am full, but I want to make bigger things. I am sure you want to help out so drop me a line at richard.theuma@gmail.com.
-                                </p>
-                            </div>
-                            <div>
-                                <details>
-                                    <summary>History</summary>
-                                </details>
-                                <p>
-                                    Hi. I spend my days making things. I can make things on screens. This is not very useful, so I also learned to save the things we make on screens. This is OK, but it's pretty lonely
-                                    so I also learned how to have my thing eat other things stuck in the spider's web. This is pretty selfish though, so I rounded it off by making sure my thing can be eaten by other things as well.
-                                    Now I am full, but I want to make bigger things. I am sure you want to help out so drop me a line at richard.theuma@gmail.com.
-                                </p>
-                            </div>
-                            <div>
-                                <details>
-                                    <summary>Other</summary>
-                                </details>
-                                <p>Hi. I spend my days making things. I can make things on screens. This is not very useful, so I also learned to save the things we make on screens. This is OK, but it's pretty lonely
-                                    so I also learned how to have my thing eat other things stuck in the spider's web. This is pretty selfish though, so I rounded it off by making sure my thing can be eaten by other things as well.
-                                    Now I am full, but I want to make bigger things. I am sure you want to help out so drop me a line at richard.theuma@gmail.com.</p>
-                            </div>
-                        </nav>    
-            </details>     
-            </section>
+        <article class="none">
+            <div id="about">
+                <h2>About</h2>
+                <section>
+                    <h3>
+                        <em>
+                            So, what do you do?
+                        </em>
+                    </h3>
+                    <p>
+                         I make things on screens. 
+                    </p> 
+                    <em>
+                        This is not very useful.
+                    </em>
+                    <p>
+                     I can also save the things we make on screens. 
+                    </p>
+                    <em>
+                        This is better, but don't your things need a bit of company?
+                    </em>
+                    <p>
+                        Yes, that's why I can also make my thing eat other things on the web.
+                    </p>
+                    <em>
+                        Your things do all the consuming. Selfish much?
+                    </em>
+                    <p>
+                        I thought so too, so now some of my things can be eaten by other things on the web to make more things.
+                    </p>
+                    <em>
+                        So, what now?
+                    </em>
+                    <p>
+                      Now I am full, but I want to make bigger things. I am sure you want to help out so<a href="mailto:richard.theuma@gmailcom">drop me a line.</a>
+                    </p>
+                </section>
+                <section>
+                    <details>
+                        <summary>More info please</summary> 
+                            <nav>
+                                <div>
+                                    <details>
+                                        <summary>Background</summary>
+                                    </details>
+                                    <p>
+                                        I built a rudimentary searh engine in Python through a guided setup for an 
+                                        <a href="https://www.cs.virginia.edu/~evans/courses/cs101">introductory computer science course</a>. 
+                                        This was my introduction to programming. Later on, I <a href="https://github.com/rxthew/Webscraper-scripts">wrote some scripts for web scraping</a> and 
+                                        <a href="https://github.com/rxthew/seriesclassifierbeta">dabbled with AI</a>. However, my featured body of work is based around web development, 
+                                        specifially in fulfilment of <a href="https://www.theodinproject.com">the Odin Project</a>, which is an open source curriculum developed and maintained 
+                                        by software developers in the field. Here I gained the ability to independently build projects across the whole stack.
+                                    </p>
+                                </div>
+                                <div>
+                                    <details>
+                                        <summary>Skills</summary>
+                                    </details>
+                                    <p>
+                                        I can build accessible, responsive, cross-browser compatible frontends and I can implement database schemas and models and handle
+                                        routes on the backend. I also have experience with unit testing, APIs, Git and Bash. My experience is based on
+                                        JavaScript frameworks so: TypeScript, Express and Node.js, React, Mongoose, Sequelize, Passport, and Jest. However, my programming
+                                        fundamentals are agnostic, I have, for example, been able to translate my Express knowledge to Flask in Python seamlessly. I prefer a 
+                                        more functional design pattern to an object oriented one, but I can never stop learning in this area so I remain open to persuasion. 
+                                    </p>
+                                </div>
+                                <div>
+                                    <details>
+                                        <summary>Hackathons</summary>
+                                    </details>
+                                    <p>
+                                        I have participated in two of Bellingcat's hackathons to build tools for open-source researchers. These resulted in a 
+                                        <a href="https://github.com/0x7dee/graphwork">social network analysis tool</a> and 
+                                        a <a href="https://github.com/octo-web">front-end interface for a preexisting command-line tool.</a>
+                                        Both hackathons had a timeframe of three days, which pushed me to develop minimally viable products under time constraints.
+                                        For the first hackatahon, I had the opportunity to pair program with another participant. We had to divide the work between us, and we had limited windows 
+                                        to communicate because we were from different timezones. This is the <a href="https://www.bellingcat.com/resources/2022/09/19/identifying-suspicious-businesses-reddit-analysis
+                                        -and-tracking-russian-propaganda-here-are-the-results-of-bellingcats-first-ever-hackathon/">article</a> featuring the tool.         
+                                    </p>
+                                </div>
+                                <div>
+                                    <details>
+                                        <summary>Mentoring</summary>
+                                    </details>
+                                    <p>
+                                       <a href="https://www.theodinproject.com">The Odin Project</a> has a thriving community on Discord where I participated in mentoring other learners.
+                                       I reaped great rewards from this practice, because I gained an insight into programming habits different from my own and varied ways of approaching problems.
+                                        Having to guide learners towards their solution, without imposing your own preferred way is difficult. I found that in explaining something, or at times, 
+                                        realising I do not know something as throughly as I thought I did ultimately made me a more rounded developer. Not to mention the inherent satisfaction of helping a total
+                                        stranger get unstuck. 
+                                    </p>
+                                </div>
+                                <div>
+                                    <details>
+                                        <summary>Open source</summary>
+                                    </details>
+                                    <p>
+                                        One of my immediate priorities is to increase my open-source contributions. So far, I have a single contribution for 
+                                        <a href="https://www.if-me.org">a mental health community</a>, where I had the straightforward task of 
+                                        <a href="https://github.com/ifmeorg/ifme/pull/2205">adding images to a text editor.</a> 
+                                    </p>
+                                </div>
+                                <div>
+                                    <details>
+                                        <summary>Other</summary>                                        
+                                    </details>
+                                    <p>
+                                        I read for Masters degrees in Law and Criminology and through that I am well-versed in research and documentation. I am also
+                                        able to use quantitative methods on small datasets using Stata or UCINET, for social graphs. I have also used Tableau to 
+                                        visualise data in a classroom setting. I have experience as a Compliance Analyst for investment firms which involved writing
+                                        reports, interviewing clients for monitoring, and advising them on steps to take to comply with the relevant rules. 
+                                    </p>
+                                </div>
+                            </nav>    
+                    </details>     
+                </section>
+            </div>
+            
       
         </article>
-        <article>
+        <article class="none">
                 <h2>Projects</h2>
             <section id="devices">
                 <div>
@@ -122,28 +193,28 @@
                     <em>Built with:</em>
                     <ul>
                         <li>
-                            <img src="assets/Icons/typescript.svg" alt="typescript"/>
+                            <img src="assets/Icons/typescript.svg" alt="typescript logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/express.svg" alt="express"/>
+                            <img src="assets/Icons/express.svg" alt="express logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/mongodb.svg" alt="mongodb"/>
+                            <img src="assets/Icons/mongodb.svg" alt="mongodb logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/react.svg" alt="react"/>
+                            <img src="assets/Icons/react.svg" alt="react logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/passport.svg" alt="passport"/>
+                            <img src="assets/Icons/passport.svg" alt="passport logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/mui.svg" alt="mui"/>
+                            <img src="assets/Icons/mui.svg" alt="mui logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/reactrouter.svg" alt="reactrouter"/>
+                            <img src="assets/Icons/reactrouter.svg" alt="reactrouter logo"/>
                         </li>
                         <li>
-                            <img src="assets/Icons/jest.svg" alt="jest"/>
+                            <img src="assets/Icons/jest.svg" alt="jest logo"/>
                         </li>
                     </ul>
                 </div>
