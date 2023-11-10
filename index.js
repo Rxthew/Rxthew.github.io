@@ -780,7 +780,7 @@ const activateResizeEventListener = function(){
         isWideScreen() ? wideWorkflow() : narrowWorkflow() 
     };
 
-    const resizeHandler = () => isAboutInvisible ? false : adjustDOM();
+    const resizeHandler = () => isAboutInvisible() ? false : adjustDOM();
     window.addEventListener('resize', resizeHandler)
 
 };
