@@ -259,10 +259,10 @@ const projectHelpers = function(){
 
 const aboutHelpers = function(){
 
+    
     const isWideScreen = function(){
         const isWideScreenWidth = window.matchMedia('(min-width:800px)');
-        const isWideScreenHeight = window.matchMedia('(min-height: 700px)');
-        return isWideScreenWidth.matches && isWideScreenHeight.matches
+        return isWideScreenWidth.matches
     }
 
     const closeAllDetails = function(){
@@ -379,9 +379,10 @@ const aboutStaticHelpers = (function(){
 
     const fixPrimaryDetailsOnTop = function(){
 
+        const isPrimaryDetailsClosed = !document.querySelector('details').hasAttribute('open')
         const aboutTitle = document.querySelector('#about > h2');
         const aboutTitleBottomLocation = aboutTitle.getBoundingClientRect().bottom;
-        aboutTitleBottomLocation <= 0 ? addFixedToDetails() : removeFixedFromDetails()
+        aboutTitleBottomLocation <= 0 && isPrimaryDetailsClosed ? addFixedToDetails() : removeFixedFromDetails()
 
     };
 
