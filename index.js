@@ -70,7 +70,7 @@ const currentProject = function(){
                 {wide: "Wide screenshot of project: WhosaidWhat " , mobile:"Mobile screenshot of project: WhosaidWhat "},
                 "Who Said What",
                 "Template blog with authentication for different tiers of membership, served via a RESTful API",
-                {live: "https:/rxthew.github.io/whosaidwhat", repo: "https://www.github.com/rxthew/whosaidwhatapi"}, 
+                {live: "https://rxthew.github.io/whosaidwhat", repo: "https://www.github.com/rxthew/whosaidwhatapi"}, 
                 projectIcons('typescript','express','mongodb','react','passport','mui','reactrouter','jest')
                 
     );
@@ -92,7 +92,7 @@ const currentProject = function(){
         {wide: "Wide screenshot of project: Marketplace " , mobile:"Mobile screenshot of project: Marketplace "},
         "Marketplace",
         "E-commerce front-end simulation",
-        {live: "https:/rxthew.github.io/marketplace", repo: "https://www.github.com/rxthew/marketplace"},
+        {live: "https://rxthew.github.io/marketplace", repo: "https://www.github.com/rxthew/marketplace"},
         projectIcons('typescript','react','reactrouter','tailwindcss','jest')
         
     
@@ -103,7 +103,7 @@ const currentProject = function(){
         {wide: "Wide screenshot of project: Mealwars " , mobile:"Mobile screenshot of project: Mealwars "},
         "Mealwars",
         "Meal comparison tool",
-        {live: "https:/rxthew.github.io/mealwars", repo: "https://www.github.com/rxthew/mealwars"},
+        {live: "https://rxthew.github.io/mealwars", repo: "https://www.github.com/rxthew/mealwars"},
         projectIcons('typescript','react','css3')
         
     
@@ -114,7 +114,7 @@ const currentProject = function(){
         {wide: "Wide screenshot of project: Journal maker " , mobile:"Mobile screenshot of project: Journal maker "},
         "Journalmaker",
         "Journal template generator",
-        {live: "https:/rxthew.github.io/journalmaker", repo: "https://www.github.com/rxthew/journalmaker"},
+        {live: "https://rxthew.github.io/journalmaker", repo: "https://www.github.com/rxthew/journalmaker"},
         projectIcons('typescript','react','css3')
         
     
@@ -125,7 +125,7 @@ const currentProject = function(){
         {wide: "Wide screenshot of project: Weather forecast " , mobile:"Mobile screenshot of project: Weather foreacast "},
         "Weather Forecast",
         "Weather forecast renderer",
-        {live: "https:/rxthew.github.io/weatherAPI", repo: "https://www.github.com/rxthew/weatherAPI"},
+        {live: "https://rxthew.github.io/weatherAPI", repo: "https://www.github.com/rxthew/weatherAPI"},
         projectIcons('html5', 'css3', 'javascript', 'webpack')
         
     
