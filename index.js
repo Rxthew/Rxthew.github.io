@@ -485,7 +485,8 @@ const headerHelpers = function(project){
     };
     
     const setFrequency = function(feTurbulence){
-        const frequency = Math.round((Math.random() * 0.5) * 10)/10 || 0.3;
+        const pseudoRandomAttempt = Math.round((Math.random() * 0.7) * 10)/10;
+        const frequency = pseudoRandomAttempt > 0.2 ? pseudoRandomAttempt : 0.3;
         feTurbulence.setAttribute('baseFrequency',frequency)
     
     };
