@@ -158,7 +158,7 @@ const projectHelpers = function(){
 
         const images = Array.from(document.querySelectorAll('#devices img'));
         const toolsContainer = document.querySelector('ul');
-        const title = Array.from(document.querySelectorAll('#project_details h3'))[0]
+        const title = Array.from(document.querySelectorAll('#project_details h2'))[0]
         const description = Array.from(document.querySelectorAll('#project_details p'))[0];
         const links = Array.from(document.querySelectorAll('#project_details a'))
     
@@ -577,14 +577,14 @@ const eventTargets = function(){
     const headerAndChildren = Array.from(document.querySelectorAll('header, header *'));
     const headerButtons = Array.from(document.querySelectorAll('header button'));
     const headerSvgs = Array.from(document.querySelectorAll('header svg'));
-    const projectDetails= Array.from(document.querySelectorAll('#project_details button'));
+    const projectTooling= Array.from(document.querySelectorAll('#project_tooling button'));
     const primarySummary= document.querySelector('summary');
     const navSummaries= Array.from(document.querySelectorAll('nav summary'));
      return {
          headerAndChildren,
          headerButtons,
          headerSvgs,
-         projectDetails,
+         projectTooling,
          primarySummary,
          navSummaries
       
@@ -706,7 +706,7 @@ const clickEventListener = function(event){
         headerAndChildren,
         headerButtons, 
         headerSvgs,
-        projectDetails, 
+        projectTooling, 
         primarySummary, 
         navSummaries, 
         } = eventTargets();  
@@ -720,7 +720,7 @@ const clickEventListener = function(event){
         break
         case headerAndChildren.includes(event.target): revertToDefaultHeader();
         break
-        case projectDetails.includes(event.target): clickProjectButton(event);
+        case projectTooling.includes(event.target): clickProjectButton(event);
         break
         case event.target === primarySummary: resetAllDetails(event);
         break
