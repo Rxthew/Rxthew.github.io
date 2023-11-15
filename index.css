@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
 
 html {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    font-family: 'Merriweather', serif;
+    font-family: 'Open Sans', serif;
 }
 
 *,*:before,*:after {
@@ -22,7 +23,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 
 article {
-    min-height: 150vh;
+    color: #494f6a;
+    min-height: 100vh;
     padding: 1rem;
 }
 
@@ -81,7 +83,6 @@ g {
 header {
     background: -o-linear-gradient(70deg, white 20%, rgb(219, 226, 236) 50%,white 60%, rgb(219, 226, 236));
     background: linear-gradient(20deg, white 20%, rgb(219, 226, 236) 50%,white 60%, rgb(219, 226, 236));
-    background-size: 100vw 100px;
     cursor: pointer;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -133,11 +134,18 @@ h1 {
             animation-timing-function: linear;
     font-size: 3rem;
     letter-spacing: 0.75rem;
-    text-align: center;
-    
-    
+    text-align: center; 
     
 }
+
+h1, h2 {
+    color: black;
+}
+
+h1,h2,h3.h4 {
+    font-family: 'Merriweather','serif';
+}
+
 
 
 li {
@@ -172,11 +180,9 @@ main:before {
     width: 100vw;
 }
 
+
 nav > div {
     display: inline-block;
-    -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
     position: relative;
 }
 
@@ -198,30 +204,6 @@ noscript {
     z-index: 1;
 }
 
-
-section > details > summary {
-    border: 1px solid;
-    -webkit-box-shadow: 1px 3px;
-            box-shadow: 1px 3px;
-    font-weight: normal;
-    width: 12rem;
-    padding: 1rem;
-
-}
-
-section > details > summary:active {
-    background-color: rgba(82, 92, 138, 0.396); 
-    -webkit-box-shadow: 1px 1px; 
-            box-shadow: 1px 1px;
-  
-    
-
-}
-
-span {
-    color: #ca0000;
-    
-}
 
 summary::before {
     border: 1px solid;
@@ -275,19 +257,6 @@ ul {
 
 }
 
-.first {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1
-}
-
-.fixed {
-    position: fixed;
-    top: 10px;
-    will-change: transform;
-    width: max(43vw,400px);
-
-}
 
 .none {
     display: none;
@@ -312,6 +281,7 @@ ul {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     padding: 1rem;
+    position: relative;
     
 }
 
@@ -331,7 +301,6 @@ ul {
 
 
 #about nav {
-    background: #c5e4ffc2;
     border-radius: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -339,30 +308,40 @@ ul {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     margin-top: 0.8rem;
-    max-width: 100%;
-    padding: 3rem 0.15rem 0 0.85rem;
+   padding: 1rem;
+   width: 100vw;
     
 }
 
 
-#about  p, #about em {
+
+#about  p {
+    box-shadow: 0px 0px 15px 2px;
     display: block;
-    line-height: 1.7;
-    width: 300px;
+    line-height: 2.5;
+   -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+    width: 100%;
     
 
 }
 
-#about p > a {
+#about h4 > a, #about p > a {
     margin: 0;
     padding: 0;
     
 }
 
-#about > section:last-child {
-    width: max(43vw,400px);
-    
+#about > section:first-child {
+    text-align: center;
+    width: 100%;
 }
+
+#about > section:last-child {
+    background: rgb(219, 226, 236);
+   
+}
+
 
 #devices {
     -webkit-box-align: center;
@@ -487,35 +466,33 @@ ul {
         justify-content: space-around;
  }
 
-#project_tooling button {
+#project_tooling button { /*this to remove potentially*/
     border-style: groove;
     height: 50px;
     width: 200px;
     
  }
 
- #project_tooling button:hover {
+ #project_tooling button:hover { /*this to remove potentially. REMEMBER to add aria label and role if text is not provided.*/
     background: -o-radial-gradient(rgb(126, 138, 155),white);
     background: radial-gradient(rgb(126, 138, 155),white);
     font-weight: bold;
  }
 
- #project_tooling button:first-child {
+ #project_tooling button:first-child {/* this to remove potentially*/
     border-radius: 0 0 0 60px;
  }
 
- #project_tooling button:last-child {
+ #project_tooling button:last-child { /* this to remove potentially*/
     border-radius: 0 0 60px 0;
  }
 
  @-webkit-keyframes contractParagraph {
     0% {
-        background: linear-gradient(95deg,white,rgb(219, 226, 236));
+        background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         opacity: 1;
         max-height: 100rem;
         padding: 2rem;
-        -webkit-transform: rotate(5deg);
-                transform: rotate(5deg);
     }
 
     50% {
@@ -529,21 +506,15 @@ ul {
         opacity: 0;
         overflow: hidden;
         padding: 0;
-        -webkit-transform: none;
-                transform: none;
-
     }
 }
 
  @keyframes contractParagraph {
     0% {
-        background: -o-linear-gradient(355deg,white,rgb(219, 226, 236));
-        background: linear-gradient(95deg,white,rgb(219, 226, 236));
+        background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         opacity: 1;
         max-height: 100rem;
         padding: 2rem;
-        -webkit-transform: rotate(5deg);
-                transform: rotate(5deg);
     }
 
     50% {
@@ -557,9 +528,6 @@ ul {
         opacity: 0;
         overflow: hidden;
         padding: 0;
-        -webkit-transform: none;
-                transform: none;
-
     }
 }
 
@@ -571,9 +539,6 @@ ul {
         overflow: hidden;
         padding: 0;
         visibility: hidden;
-        -webkit-transform: none;
-                transform: none;
-        
     }
 
     50% {
@@ -582,16 +547,11 @@ ul {
     }
 
     100% {
-        background: linear-gradient(95deg,white,rgb(219, 226, 236));  
+        background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         max-height: 100rem;
         opacity: 1;
         padding: 2rem;
         visibility: visible;
-        -webkit-transform: rotate(5deg);
-                transform: rotate(5deg);
-
-        
-
     }
 }
 
@@ -603,9 +563,6 @@ ul {
         overflow: hidden;
         padding: 0;
         visibility: hidden;
-        -webkit-transform: none;
-                transform: none;
-        
     }
 
     50% {
@@ -614,17 +571,11 @@ ul {
     }
 
     100% {
-        background: -o-linear-gradient(355deg,white,rgb(219, 226, 236));
-        background: linear-gradient(95deg,white,rgb(219, 226, 236));  
+        background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         max-height: 100rem;
         opacity: 1;
         padding: 2rem;
         visibility: visible;
-        -webkit-transform: rotate(5deg);
-                transform: rotate(5deg);
-
-        
-
     }
 }
 
@@ -756,17 +707,6 @@ ul {
     }
 }
 
-@media (min-width: 700px){
-
-    #about nav {
-        -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap;
-        overflow-x: scroll;
-        position: relative;
-    }
-    
-}
-
 @media (max-width: 300px){
     * {
         word-break: break-all !important;
@@ -790,6 +730,30 @@ ul {
     #project_tooling button {
         border: none;
         font-size: 5vw;
+    }
+}
+
+@media (min-width: 700px){
+    header {
+        background-size: 100vw 100px;
+    }
+
+    #about nav {
+        max-width: 100%;
+        width: auto;
+    }
+
+    #about p {
+        -webkit-transform: none;
+        transform: none;
+    }
+
+}
+
+@media (min-width: 900px){
+
+    #about > section:first-child {
+        position: absolute;
     }
 }
 
