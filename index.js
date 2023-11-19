@@ -69,7 +69,7 @@ const currentProject = function(){
                 {wide: "./assets/screenshots/wsw.png", mobile: "./assets/screenshots/wsw_mobile.png"}, 
                 {wide: "Wide screenshot of project: WhosaidWhat " , mobile:"Mobile screenshot of project: WhosaidWhat "},
                 "Who Said What",
-                "Template blog with authentication for different tiers of membership, served via a RESTful API",
+                "Template blog with authentication served via a RESTful API",
                 {live: "https://rxthew.github.io/whosaidwhat", repo: "https://www.github.com/rxthew/whosaidwhatapi"}, 
                 projectIcons('typescript','express','mongodb','react','passport','mui','reactrouter','jest')
                 
@@ -225,6 +225,52 @@ const projectHelpers = function(){
         return
     
     };
+
+    const toggleIndicator = function(pointer){
+
+        const sharedValues = function(){
+            const highlighted = document.querySelector('.highlighted');
+            const indicators = Array.from(document.querySelectorAll('#project_tooling ol > li'));
+            const startIndex = 0;
+            const endIndex = indicators.length - 1;
+            const highlightedIndex = indicators.indexOf(highlighted);
+            return {
+                highlighted,
+                highlightedIndex,
+                indicators,
+                endIndex,
+                startIndex,
+            }
+
+        };
+
+        const changeHighlighted = function(targetElement){
+            const removeHighlighted = function(){
+                const { highlighted } = sharedValues();
+                highlighted.classList.remove('highlighted')
+            };
+    
+            const addHighlighted = function(targetElement){
+                targetElement.classList.add('highlighted')
+            };
+            removeHighlighted();
+            addHighlighted(targetElement);
+        };
+
+        
+        const backwardFlow = function(){
+            const { startIndex, endIndex, highlightedIndex, indicators } = sharedValues();
+            highlightedIndex <= startIndex ? changeHighlighted(indicators[endIndex]) : changeHighlighted(indicators[highlightedIndex - 1]);
+        };
+
+        const forwardFlow = function(){
+            const { startIndex, endIndex, highlightedIndex, indicators } = sharedValues();
+            highlightedIndex >= endIndex ? changeHighlighted(indicators[startIndex]) : changeHighlighted(indicators[highlightedIndex + 1]);
+        };
+
+        pointer === 'next' ? forwardFlow() : backwardFlow()
+
+    };
     
     
     const changeProject = function(currentProject, pointer){
@@ -237,8 +283,16 @@ const projectHelpers = function(){
         changeTitle(newProject,title);
         changeDescription(newProject, description);
         changeLinks(newProject,links);
+        toggleIndicator(pointer);
     
         currentProject.current = newProject;
+    };
+
+    const changeToSpecificProject = function(currentProject, chosenTitle){
+        while(currentProject.current.title !== chosenTitle){
+            changeProject(currentProject, 'next')
+        }
+        return
     };
 
     const resetProjectDetails = function(currentProject){
@@ -248,8 +302,11 @@ const projectHelpers = function(){
         return
     };
 
+    
+
     return {
         changeProject,
+        changeToSpecificProject,
         resetProjectDetails
         
     }
@@ -265,75 +322,19 @@ const aboutHelpers = function(){
         return isWideScreenWidth.matches
     }
 
-    const closeAllDetails = function(){
+   
+
+    const closeAllDetails = function(){ 
         const detailses = Array.from(document.querySelectorAll('details'));
         detailses.map(d => d.removeAttribute('open'));
         return
     };
-    
-    const closeAllNavDetails = function(){
-        const navDetailses = Array.from(document.querySelectorAll('nav details'));
-        navDetailses.map(d => d.removeAttribute('open'));
-        return
-    };
 
-    const identifyLastOpenText = function(){
-        const openDetailses = document.querySelectorAll('nav details[open]');
-        const lastOpen = openDetailses[openDetailses.length -1];
-        const lastOpenDiv = lastOpen && lastOpen.parentElement
-        return lastOpenDiv
-    };
-
-    const postToggleDetailsAction = function(targetDetails, postToggleAction){
-        const executeActionOnce = function(){
-            postToggleAction();
-            targetDetails.removeEventListener('toggle',executeActionOnce)
-        };
-        targetDetails.addEventListener('toggle',executeActionOnce)
-    };
 
     const removeAllContracted = function(){
         Array.from(document.querySelectorAll('.contracted')).map(e => e.classList.remove('contracted'));
         
     };
-    
-    const removeAllFirsts = function(){
-        Array.from(document.querySelectorAll('.first')).map(e => e.classList.remove('first'));
-        return
-    };
-    
-
-    const resetNavScroll = function(){
-        const nav = document.querySelector('details > nav');
-        nav.scrollLeft = 0;
-    };
-
-
-    const setPrimarySummaryTextContent = function(newText){
-        const summary = document.querySelector('details > summary');
-        summary.textContent = newText;
-    }
-
-    const scrollToTextPosition = function(targetElement){
-        targetElement.parentElement.scrollTo(targetElement.offsetLeft, 0)
-    };
-
-    const scrollToLastOpenText = function(){
-        const targetElement = identifyLastOpenText();
-        targetElement ? scrollToTextPosition(targetElement) : resetNavScroll();
-
-    };
-
-    const manageScroll = function(targetElement,det){
-        det.hasAttribute('open') ?
-            scrollToTextPosition(targetElement)
-            
-          :
-            scrollToLastOpenText()   
-          
-
-    };
-
 
     const toggleContractedState = function(targetElement,det){
         det.hasAttribute('open') ?
@@ -342,75 +343,16 @@ const aboutHelpers = function(){
             targetElement.classList.remove('contracted')
     
     };
-    
-    const toggleFirst = function(targetElement, det){
-        det.hasAttribute('open') ? targetElement.classList.remove('first') : targetElement.classList.add('first')
-    };
-
 
     return {
-        isWideScreen,
         closeAllDetails,
-        closeAllNavDetails,
-        manageScroll,
-        postToggleDetailsAction,
-        removeAllFirsts,
+        isWideScreen,
         removeAllContracted,
-        resetNavScroll,
-        scrollToTextPosition,
-        setPrimarySummaryTextContent,
         toggleContractedState,
-        toggleFirst
+
     }
 
 };
-
-const aboutStaticHelpers = (function(){
-
-    const addFixedToDetails = function(){
-        const primaryDetails = document.querySelector('details');
-        primaryDetails.classList.add('fixed');
-    }
-
-    const removeFixedFromDetails = function(){
-        const primaryDetails = document.querySelector('details');
-        primaryDetails.classList.remove('fixed');
-    }
-
-    const fixPrimaryDetailsOnTop = function(){
-
-        const isPrimaryDetailsClosed = !document.querySelector('details').hasAttribute('open')
-        const aboutTitle = document.querySelector('#about > h2');
-        const aboutTitleBottomLocation = aboutTitle.getBoundingClientRect().bottom;
-        aboutTitleBottomLocation <= 0 && isPrimaryDetailsClosed ? addFixedToDetails() : removeFixedFromDetails()
-
-    };
-
-    const addScrollListenerPosition = function(){
-        const {isWideScreen} = aboutHelpers();
-
-        isWideScreen() ? window.addEventListener('scroll', fixPrimaryDetailsOnTop) : false;
-    };
-
-    const removeScrollListener = function(){
-        window.removeEventListener('scroll', fixPrimaryDetailsOnTop)
-    };
-    
-    const restorePrimaryDetailsPosition = function(){
-       
-        removeFixedFromDetails();
-        removeScrollListener();
-
-    };
-
-    return {
-        addScrollListenerPosition,
-        fixPrimaryDetailsOnTop,
-        restorePrimaryDetailsPosition,
-    }
-
-}())
-
 
 const headerHelpers = function(project){
 
@@ -500,11 +442,8 @@ const headerHelpers = function(project){
 
 
     const positiveWorkflow = function(button, hiddenElements, turbulence, header){
-        const { addScrollListenerPosition } = aboutStaticHelpers;
-
         addHighlight(button);
         hiddenElements.map(makeVisible);
-        addScrollListenerPosition();
         setFrequency(turbulence);
         closeHeader(header);    
     };
@@ -518,26 +457,16 @@ const headerHelpers = function(project){
 
         const {
             closeAllDetails,
-            removeAllFirsts,
             removeAllContracted,
-            resetNavScroll,
-            setPrimarySummaryTextContent
         } = aboutHelpers();
 
-        const {
-            restorePrimaryDetailsPosition
-        } = aboutStaticHelpers;
 
-        const resetClosedState = function(){
+        const resetClosedState = function(){ 
             removeHighlight(button);
-            resetNavScroll();
-            restorePrimaryDetailsPosition();
             visibleElements.map(makeInvisible); 
             resetProjectDetails(project); 
-            removeAllFirsts();
             removeAllContracted();
             closeAllDetails();
-            setPrimarySummaryTextContent('Be serious now.')
         ;}
 
 
@@ -556,7 +485,7 @@ const headerHelpers = function(project){
     const revertToDefaultHeader = function(){
         const header = document.querySelector('header');
         const highlighted = header.querySelector('.bold');
-        const visible = Array.from(document.querySelectorAll('article, svg'));
+        const visible = Array.from(document.querySelectorAll('article, header svg'));
         highlighted ? negativeWorkflow(highlighted, visible, header) : null;
         return
         
@@ -577,15 +506,20 @@ const eventTargets = function(){
     const headerAndChildren = Array.from(document.querySelectorAll('header, header *'));
     const headerButtons = Array.from(document.querySelectorAll('header button'));
     const headerSvgs = Array.from(document.querySelectorAll('header svg'));
-    const projectTooling= Array.from(document.querySelectorAll('#project_tooling button'));
-    const primarySummary= document.querySelector('summary');
+    const projectToolingPointers= Array.from(document.querySelectorAll('#project_tooling > div button'));
+    const projectToolingPointersSvgs = Array.from(document.querySelectorAll('#project_tooling > div button > svg'));
+    const projectToolingProjectButtons = Array.from(document.querySelectorAll('#project_tooling ol button'));
+    const projectToolingProjectImages = Array.from(document.querySelectorAll('#project_tooling ol button > img'));
+    
     const navSummaries= Array.from(document.querySelectorAll('nav summary'));
      return {
          headerAndChildren,
          headerButtons,
          headerSvgs,
-         projectTooling,
-         primarySummary,
+         projectToolingPointers,
+         projectToolingProjectButtons,
+         projectToolingProjectImages,
+         projectToolingPointersSvgs,
          navSummaries
       
      }
@@ -595,52 +529,36 @@ const eventTargets = function(){
 const project = currentProject();
 
 
-const clickProjectButton = function(event){
+const clickSpecificProject = function(event){
+    const {changeToSpecificProject} = projectHelpers();
+
+    const newProject = event.target.id;
+    changeToSpecificProject(project,newProject);
+};
+
+const clickSpecificProjectImage = function(event){
+    const button = event.target.parentElement;
+    button.click()
+};
+
+const clickProjectPointer = function(event){
 
     const {changeProject} = projectHelpers();
 
-    const pointer = event.target.textContent.toLowerCase();
+    const pointer = event.target.id; 
     changeProject(project,pointer)
 };
 
-
-const resetAllDetails = function(event){
-    const {
-        closeAllNavDetails,
-        removeAllContracted,
-        removeAllFirsts, 
-        resetNavScroll,
-        setPrimarySummaryTextContent} = aboutHelpers();
-    
-    const details = event.target.parentElement;
-    const isPrimaryDetailsOpen = details.hasAttribute('open');
-
-    const ifOpenWorkflow = function(){
-        resetNavScroll();
-        removeAllContracted();
-        removeAllFirsts();
-        closeAllNavDetails();
-        setPrimarySummaryTextContent('Be serious now.')
-    };
-
-    const ifClosedWorkflow = function(){
-        setPrimarySummaryTextContent('Ah! Make it stop!')
-        
-    };
-
-    isPrimaryDetailsOpen ? ifOpenWorkflow() : ifClosedWorkflow()
-    
+const clickProjectSvg = function(event){
+    const button = event.target.nodeName === "svg" ? event.target.parentElement : event.target.closest('svg').parentElement;
+    button.click()
 };
+
 
 const toggleStatefulText = function(event){
 
     const {
-        isWideScreen,
-        manageScroll,
-        postToggleDetailsAction,
-        removeAllFirsts,
         toggleContractedState,
-        toggleFirst,
     } = aboutHelpers();
 
     const details = event.target.parentElement;
@@ -648,16 +566,6 @@ const toggleStatefulText = function(event){
     const div = details.parentElement;
    
     toggleContractedState(p,details);
-
-    const wideScreenTextAdjustment = function(){
-        
-        toggleFirst(div,details);
-        postToggleDetailsAction(details,() => manageScroll(div,details))
-        
-    };
-
-
-    isWideScreen() ? wideScreenTextAdjustment()  : removeAllFirsts();
 
 };
 
@@ -706,8 +614,10 @@ const clickEventListener = function(event){
         headerAndChildren,
         headerButtons, 
         headerSvgs,
-        projectTooling, 
-        primarySummary, 
+        projectToolingProjectButtons,
+        projectToolingProjectImages,
+        projectToolingPointers, 
+        projectToolingPointersSvgs,
         navSummaries, 
         } = eventTargets();  
         
@@ -720,9 +630,13 @@ const clickEventListener = function(event){
         break
         case headerAndChildren.includes(event.target): revertToDefaultHeader();
         break
-        case projectTooling.includes(event.target): clickProjectButton(event);
+        case projectToolingProjectButtons.includes(event.target) : clickSpecificProject(event);
         break
-        case event.target === primarySummary: resetAllDetails(event);
+        case projectToolingProjectImages.includes(event.target) : clickSpecificProjectImage(event);
+        break
+        case projectToolingPointers.includes(event.target): clickProjectPointer(event);
+        break
+        case projectToolingPointersSvgs.includes(event.target) || projectToolingPointersSvgs.includes(event.target.closest('svg')): clickProjectSvg(event)
         break
         case navSummaries.includes(event.target): toggleStatefulText(event);
         break
@@ -731,60 +645,6 @@ const clickEventListener = function(event){
 
 };
 
-const activateResizeEventListener = function(){
-
-    const { 
-        addScrollListenerPosition,
-        fixPrimaryDetailsOnTop,
-        restorePrimaryDetailsPosition,
-    
-    } = aboutStaticHelpers;
-    const { 
-        isWideScreen,    
-        removeAllFirsts, 
-        resetNavScroll,
-        toggleFirst
-    
-    } = aboutHelpers();
-
-    const isAboutInvisible = function(){
-        const article = document.querySelector('#about').closest('article');
-        return article.classList.contains('none')
-    };
-
-
-    const narrowWorkflow = function(){
-        removeAllFirsts();
-        restorePrimaryDetailsPosition()
-
-    }
-
-    const wideWorkflow = function(){
-        const identifyAllOpenNavDetails = function(){
-            return Array.from(document.querySelectorAll('nav details[open]'))
-        }
-
-        const toggleFirstOnOpenDivs = function(){
-            const allOpenNavDetails = identifyAllOpenNavDetails();
-            allOpenNavDetails.map(details => toggleFirst(details.closest('div'), details))
-
-        }
-
-        fixPrimaryDetailsOnTop();
-        addScrollListenerPosition();
-        toggleFirstOnOpenDivs();
-        resetNavScroll();
-
-    };
-
-    const adjustDOM = function(){
-        isWideScreen() ? wideWorkflow() : narrowWorkflow() 
-    };
-
-    const resizeHandler = () => isAboutInvisible() ? false : adjustDOM();
-    window.addEventListener('resize', resizeHandler)
-
-};
 
 const addListenerToBody = function(){
     const body = document.querySelector('body');
@@ -792,4 +652,4 @@ const addListenerToBody = function(){
 };
 
 addListenerToBody()
-activateResizeEventListener()
+
