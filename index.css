@@ -290,6 +290,10 @@ summary::webkit-details-marker{
 
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 
 .highlighted  img {
     border: 1px solid blue;

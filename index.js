@@ -399,11 +399,21 @@ const headerHelpers = function(project){
     
     
     const makeVisible = function(element){
-         element.classList.remove('none');
+         element.classList.remove('hidden');
     };
     
     const makeInvisible = function(element){
-         element.classList.add('none');
+         element.classList.add('hidden');
+    };
+
+    const makeNone = function(element){
+        element.classList.add('none');
+
+    };
+
+    const removeNone = function(element){
+        element.classList.remove('none');
+
     };
     
     const closeHeader = function(header){
@@ -442,8 +452,10 @@ const headerHelpers = function(project){
 
 
     const positiveWorkflow = function(button, hiddenElements, turbulence, header){
+        const {noneElements, visibilityElements} = hiddenElements; 
         addHighlight(button);
-        hiddenElements.map(makeVisible);
+        noneElements.map(removeNone)
+        visibilityElements.map(makeVisible);
         setFrequency(turbulence);
         closeHeader(header);    
     };
@@ -462,8 +474,10 @@ const headerHelpers = function(project){
 
 
         const resetClosedState = function(){ 
+            const {noneElements, visibilityElements} = visibleElements;
             removeHighlight(button);
-            visibleElements.map(makeInvisible); 
+            noneElements.map(makeNone);
+            visibilityElements.map(makeInvisible); 
             resetProjectDetails(project); 
             removeAllContracted();
             closeAllDetails();
@@ -485,7 +499,7 @@ const headerHelpers = function(project){
     const revertToDefaultHeader = function(){
         const header = document.querySelector('header');
         const highlighted = header.querySelector('.bold');
-        const visible = Array.from(document.querySelectorAll('article, header svg'));
+        const visible = {noneElements: Array.from(document.querySelectorAll('header svg')), visibilityElements: Array.from(document.querySelectorAll('article'))};
         highlighted ? negativeWorkflow(highlighted, visible, header) : null;
         return
         
@@ -563,8 +577,7 @@ const toggleStatefulText = function(event){
 
     const details = event.target.parentElement;
     const p = details.nextElementSibling;
-    const div = details.parentElement;
-   
+
     toggleContractedState(p,details);
 
 };
@@ -584,8 +597,8 @@ const clickHeaderButton = function(event){
         const relations = identifyButtonRelations(event.target);
         const currentBoldButton = header.querySelector('.bold');
         const otherRelations = currentBoldButton ? identifyButtonRelations(currentBoldButton) : null;
-        const turnOn = [event.target, [relations.article, relations.svgSibling],relations.turbulence,header];
-        const turnOff = otherRelations && [currentBoldButton, [otherRelations.article, otherRelations.svgSibling],header];
+        const turnOn = [event.target, {visibilityElements: [relations.article], noneElements: [relations.svgSibling]},relations.turbulence,header];
+        const turnOff = otherRelations && [currentBoldButton, {visibilityElements: [otherRelations.article], noneElements: [otherRelations.svgSibling]},header];
         return {
             turnOn,
             turnOff
