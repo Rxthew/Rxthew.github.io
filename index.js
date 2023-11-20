@@ -354,6 +354,24 @@ const aboutHelpers = function(){
 
 };
 
+const animationStatus = (function(){
+    const status = {
+        notAnimating: true
+    };
+    
+    const getStatus = function(){ return status.notAnimating};
+    const setStatus = function(){ 
+        status.notAnimating = !status.notAnimating;
+        return getStatus()
+    }
+
+    return {
+        getStatus,
+        setStatus
+    }
+
+})(); 
+
 const headerHelpers = function(project){
 
     const postAnimationHandler = function(postAnimationAction, targetElement){
@@ -452,11 +470,16 @@ const headerHelpers = function(project){
 
     const positiveWorkflow = function(button, hiddenElements, turbulence){
         const {noneElements, visibilityElements} = hiddenElements; 
+        const { setStatus } = animationStatus;
+        const article = identifyButtonRelations(button).article;
+
         addHighlight(button);
         noneElements.map(removeNone)
         visibilityElements.map(makeVisible);
         setFrequency(turbulence);
-        visibilityElements.map(expandArticle)
+        postAnimationHandler(setStatus, article);
+        visibilityElements.map(expandArticle);
+        setStatus()
            
     };
 
@@ -473,6 +496,7 @@ const headerHelpers = function(project){
         } = aboutHelpers();
 
         const {noneElements, visibilityElements} = visibleElements;
+        const { setStatus } = animationStatus;
 
 
         const resetClosedState = function(){ 
@@ -482,6 +506,7 @@ const headerHelpers = function(project){
             resetProjectDetails(project); 
             removeAllContracted();
             closeAllDetails();
+            setStatus()
         ;}
 
 
@@ -489,6 +514,7 @@ const headerHelpers = function(project){
         scrollToTop();
         postAnimationHandler(resetClosedState, article); 
         visibilityElements.map(contractArticle);
+        setStatus()
 
     };
 
@@ -594,6 +620,8 @@ const clickHeaderButton = function(event){
         positiveWorkflow,
         revertToDefaultHeader
     } = headerHelpers(project);
+
+    const { getStatus } = animationStatus;
     
     const produceOnAndOffSwitches = function(){
         const header = document.querySelector('header');
@@ -617,8 +645,12 @@ const clickHeaderButton = function(event){
     }
 
     const isThisArticleAlreadyOpen = event.target.classList.contains('bold');
+    const executeAction = function(){
+        return isThisArticleAlreadyOpen ?  revertToDefaultHeader() : openArticle()
+
+    };
      
-    return isThisArticleAlreadyOpen ?  revertToDefaultHeader() : openArticle()
+    return getStatus() ? executeAction() : false;
 }; 
 
 const clickHeaderSvg = function(event){
