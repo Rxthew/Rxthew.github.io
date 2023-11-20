@@ -416,14 +416,14 @@ const headerHelpers = function(project){
 
     };
     
-    const closeHeader = function(header){
-        header.classList.remove('open');
-        header.classList.add('closed');
+    const expandArticle = function(article){
+        article.classList.remove('closed');
+        article.classList.add('open');
     };
     
-    const openHeader = function(header){
-        header.classList.remove('closed');
-        header.classList.add('open');
+    const contractArticle = function(article){
+        article.classList.remove('open');
+        article.classList.add('closed');
     };
     
     const addHighlight = function(button){
@@ -451,17 +451,18 @@ const headerHelpers = function(project){
     };
 
 
-    const positiveWorkflow = function(button, hiddenElements, turbulence, header){
+    const positiveWorkflow = function(button, hiddenElements, turbulence){
         const {noneElements, visibilityElements} = hiddenElements; 
         addHighlight(button);
         noneElements.map(removeNone)
         visibilityElements.map(makeVisible);
         setFrequency(turbulence);
-        closeHeader(header);    
+        visibilityElements.map(expandArticle)
+           
     };
 
 
-    const negativeWorkflow = function(button, visibleElements,header){
+    const negativeWorkflow = function(button, visibleElements){
 
         const {
             resetProjectDetails
@@ -472,9 +473,10 @@ const headerHelpers = function(project){
             removeAllContracted,
         } = aboutHelpers();
 
+        const {noneElements, visibilityElements} = visibleElements;
+
 
         const resetClosedState = function(){ 
-            const {noneElements, visibilityElements} = visibleElements;
             removeHighlight(button);
             noneElements.map(makeNone);
             visibilityElements.map(makeInvisible); 
@@ -484,9 +486,9 @@ const headerHelpers = function(project){
         ;}
 
 
-        scrollToTop()
-        postAnimationHandler(resetClosedState)
-        openHeader(header);
+        scrollToTop();
+        postAnimationHandler(resetClosedState);
+        visibilityElements.map(contractArticle);
 
     };
 
@@ -597,8 +599,8 @@ const clickHeaderButton = function(event){
         const relations = identifyButtonRelations(event.target);
         const currentBoldButton = header.querySelector('.bold');
         const otherRelations = currentBoldButton ? identifyButtonRelations(currentBoldButton) : null;
-        const turnOn = [event.target, {visibilityElements: [relations.article], noneElements: [relations.svgSibling]},relations.turbulence,header];
-        const turnOff = otherRelations && [currentBoldButton, {visibilityElements: [otherRelations.article], noneElements: [otherRelations.svgSibling]},header];
+        const turnOn = [event.target, {visibilityElements: [relations.article], noneElements: [relations.svgSibling]},relations.turbulence];
+        const turnOff = otherRelations && [currentBoldButton, {visibilityElements: [otherRelations.article], noneElements: [otherRelations.svgSibling]}];
         return {
             turnOn,
             turnOff
@@ -666,3 +668,21 @@ const addListenerToBody = function(){
 
 addListenerToBody()
 
+//FIRST THING TO DO IS COMMIT THIS SCRIPT. DO NOT SYNC CHANGES.
+
+
+
+// the colour gap in about
+// hovering the stuff
+// this animation timing thing. problem is probably to do with reflow. maybe TIMING FUNCTION would work better. web dev animation guide need to check to optimise. also check 60 FPS maybz.
+// _>  ok translate Y solution re: above, we can also probably use scale for the css transition. Can't do anything about texthadow and the underline, I can live with those. 
+//-> display none on the articles is messing me up. For this do hidden then the grid stack thing remember z-index for the paper's shadow.
+// -> the worst culprit is that tool container.
+// apart from that I need to set up a debouncing thing.
+//width of tools @super narrow
+//bro add that padding to the article!
+//Check everything is tight for Chrome too -> issue with background papers thing in ipads. Make sure that whenever Richard Thewma takes up the whole page that that's gone.
+//also re above look at 25% view on ipad how the about is coming up and leaving a white space in the background at the bottom. Ick.
+// --> solution for above is to transition ilnear gradient back to white.
+//still have to do the thing request anim frame.
+// autoprefixer with webkit marker thing

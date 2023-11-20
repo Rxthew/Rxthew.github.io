@@ -279,10 +279,10 @@ summary::webkit-details-marker{
 }
 
 .closed {
-    -webkit-animation: 1.5s linear 0s 1 normal forwards running contractHeader;
-            animation: 1.5s linear 0s 1 normal forwards running contractHeader
+    animation: 1.5s ease-out 0s 1 normal forwards running contractArticle
 
-}
+ }
+
 
 .contracted {
     -webkit-animation: 0.25s linear 0s 1 normal forwards running contractParagraph;
@@ -307,10 +307,8 @@ summary::webkit-details-marker{
 }
 
 .open {
-    -webkit-animation: 1.5s ease-out 0s 1 normal forwards running expandHeader;
-            animation: 1.5s ease-out 0s 1 normal forwards running expandHeader
-
-}
+    animation: 1.5s linear 0s 1 normal forwards running expandArticle
+ }
 
 
 #about {
@@ -531,6 +529,28 @@ summary::webkit-details-marker{
 
  
 
+ @keyframes contractArticle {
+    0% {
+        transform: translateY(-60vh);
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes expandArticle {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-60vh);
+    }
+}
+
+ 
+
  @-webkit-keyframes contractParagraph {
     0% {
         background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
@@ -624,48 +644,6 @@ summary::webkit-details-marker{
 }
 
 
-@-webkit-keyframes contractHeader {
-    0% {
-        padding-bottom: 60vh;
-    }
-
-    100% {
-        padding-bottom: 0;
-    }
-}
-
-
-@keyframes contractHeader {
-    0% {
-        padding-bottom: 60vh;
-    }
-
-    100% {
-        padding-bottom: 0;
-    }
-}
-
-
-@-webkit-keyframes expandHeader {
-    0% {
-        padding-bottom: 0;
-    }
-
-    100% {
-        padding-bottom: 60vh;
-    }
-}
-
-
-@keyframes expandHeader {
-    0% {
-        padding-bottom: 0;
-    }
-
-    100% {
-        padding-bottom: 60vh;
-    }
-}
 
 @-webkit-keyframes nameReveal {
     0% {
