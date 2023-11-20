@@ -356,15 +356,14 @@ const aboutHelpers = function(){
 
 const headerHelpers = function(project){
 
-    const postAnimationHandler = function(postAnimationAction){
-        const header = document.querySelector('header');
+    const postAnimationHandler = function(postAnimationAction, targetElement){
         
         const executeActionOnce = function(){
             postAnimationAction()
-            header.removeEventListener('animationend',executeActionOnce);
+            targetElement.removeEventListener('animationend',executeActionOnce);
         };
 
-       header.addEventListener('animationend',executeActionOnce);
+       targetElement.addEventListener('animationend',executeActionOnce);
     };
 
     const identifyButtonRelations = function(buttonElement){
@@ -486,15 +485,17 @@ const headerHelpers = function(project){
         ;}
 
 
+        const article = identifyButtonRelations(button).article;
         scrollToTop();
-        postAnimationHandler(resetClosedState);
+        postAnimationHandler(resetClosedState, article); 
         visibilityElements.map(contractArticle);
 
     };
 
     const mixedWorkflow = function(turnOff, turnOn){
+        const article = document.querySelector('.open');
+        postAnimationHandler(() => positiveWorkflow(...turnOn), article)
         negativeWorkflow(...turnOff)
-        postAnimationHandler(() => positiveWorkflow(...turnOn))
         
     };
 
@@ -502,7 +503,7 @@ const headerHelpers = function(project){
         const header = document.querySelector('header');
         const highlighted = header.querySelector('.bold');
         const visible = {noneElements: Array.from(document.querySelectorAll('header svg')), visibilityElements: Array.from(document.querySelectorAll('article'))};
-        highlighted ? negativeWorkflow(highlighted, visible, header) : null;
+        highlighted ? negativeWorkflow(highlighted, visible) : null;
         return
         
 
@@ -607,6 +608,8 @@ const clickHeaderButton = function(event){
         }        
     };
 
+    
+
     const openArticle = function(){
         const {turnOff, turnOn} = produceOnAndOffSwitches();
         const areOtherArticlesOpen = turnOff;
@@ -668,21 +671,3 @@ const addListenerToBody = function(){
 
 addListenerToBody()
 
-//FIRST THING TO DO IS COMMIT THIS SCRIPT. DO NOT SYNC CHANGES.
-
-
-
-// the colour gap in about
-// hovering the stuff
-// this animation timing thing. problem is probably to do with reflow. maybe TIMING FUNCTION would work better. web dev animation guide need to check to optimise. also check 60 FPS maybz.
-// _>  ok translate Y solution re: above, we can also probably use scale for the css transition. Can't do anything about texthadow and the underline, I can live with those. 
-//-> display none on the articles is messing me up. For this do hidden then the grid stack thing remember z-index for the paper's shadow.
-// -> the worst culprit is that tool container.
-// apart from that I need to set up a debouncing thing.
-//width of tools @super narrow
-//bro add that padding to the article!
-//Check everything is tight for Chrome too -> issue with background papers thing in ipads. Make sure that whenever Richard Thewma takes up the whole page that that's gone.
-//also re above look at 25% view on ipad how the about is coming up and leaving a white space in the background at the bottom. Ick.
-// --> solution for above is to transition ilnear gradient back to white.
-//still have to do the thing request anim frame.
-// autoprefixer with webkit marker thing

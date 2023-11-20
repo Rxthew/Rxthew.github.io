@@ -38,7 +38,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 
 article {
+    background-color: white;
     color: #494f6a;
+    grid-area: 1/1/2/2;
+    padding: 0.25rem;
 
 }
 
@@ -204,6 +207,10 @@ ol, ul {
     padding-left: 0;
 }
 
+main {
+    display: grid;
+}
+
 
 main:after {
     -webkit-box-shadow: 0 -5px 5px black;
@@ -211,6 +218,7 @@ main:after {
     content: "";
     color: black;
     display: block;
+    grid-area: 1/1/2/2;
     height: 3px;
     width: 100vw;
 }
