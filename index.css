@@ -395,7 +395,7 @@ summary::webkit-details-marker{
 }
 
 #about > section:last-child {
-    background: linear-gradient(white 10%,rgb(219, 226, 236) 50%);
+    background: linear-gradient(white 10%,rgb(219, 226, 236) 50%,rgb(219, 226, 236) 75%,white);
    
 
 }
@@ -506,7 +506,7 @@ summary::webkit-details-marker{
 
 
 #project_details, #project_tooling {
-   padding: 1rem;
+   padding: 0.25rem;
    text-align: center;
 }
 
