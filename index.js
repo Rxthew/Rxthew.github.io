@@ -526,10 +526,11 @@ const headerHelpers = function(project){
     };
 
     const revertToDefaultHeader = function(){
+        const { getStatus } = animationStatus;
         const header = document.querySelector('header');
         const highlighted = header.querySelector('.bold');
         const visible = {noneElements: Array.from(document.querySelectorAll('header svg')), visibilityElements: Array.from(document.querySelectorAll('article'))};
-        highlighted ? negativeWorkflow(highlighted, visible) : null;
+        highlighted && getStatus() ? negativeWorkflow(highlighted, visible) : null;
         return
         
 
