@@ -18,7 +18,7 @@ a {
     color: black;
     font-weight: bold;
     margin: 0 0.5em;
-    padding: 0.35rem;
+    padding: 0.1rem 0.35rem;
     position: relative;
     text-decoration: none;
     
@@ -26,9 +26,8 @@ a {
 
 a > svg {
     color: black;
-    height: 2em;
     position: relative;
-    top: 0.5em;
+    top: 0.1em;
     width: 1.5em;
 };
 
@@ -514,6 +513,15 @@ summary::webkit-details-marker{
 #project_details > div, #project_tooling > div {
     padding: 0.25rem;
  }
+
+ #project_details > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+    padding-top: 0;
+ }
+
 
 #project_tooling > div:first-child {
     display: -webkit-box;
