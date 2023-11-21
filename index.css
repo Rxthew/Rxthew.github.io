@@ -539,7 +539,7 @@ summary::webkit-details-marker{
     border-radius: 100%;
     box-shadow: 0 0 0.5vmax 0.5vmax;
     color: #44578e;
-    width: 5vmax;
+    width: min(5rem,10vw);
     
  }
 
