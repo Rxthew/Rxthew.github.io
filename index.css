@@ -211,7 +211,7 @@ li > p {
 
 ol > li  img {
     width: 1rem;
-    transition: border-radius 0.75s, width 0.75s;
+    transition: border-radius 0.75s, transform 0.75s;
 }
 
 ol > li > button {
@@ -308,9 +308,9 @@ summary::webkit-details-marker{
 
 
 .highlighted  img {
-    border: 1px solid blue;
-    border-radius: 5px;
-    width: 1.5rem;
+    border: 0.1px solid blue;
+    border-radius: 2px;
+    transform: scale(1.5) translateY(-0.3em);
 }
 
 
