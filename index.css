@@ -36,7 +36,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
     
 }
 
-article:before, main:after {
+article:before, main.default:after {
     -webkit-box-shadow: 0 -5px 5px black;
             box-shadow: 0 -5px 5px black;
     content: "";
@@ -207,7 +207,6 @@ li > p {
     
     
 }
-
 
 ol > li  img {
     width: 1rem;

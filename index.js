@@ -413,7 +413,16 @@ const headerHelpers = function(project){
         }
     
     }
-    
+
+    const addDefault = function(){
+        const main = document.querySelector('main');
+        main.classList.add('default')
+    };
+
+    const removeDefault = function(){
+        const main = document.querySelector('main');
+        main.classList.remove('default');
+    };
     
     const makeVisible = function(element){
          element.classList.remove('hidden');
@@ -479,7 +488,8 @@ const headerHelpers = function(project){
         setFrequency(turbulence);
         postAnimationHandler(setStatus, article);
         visibilityElements.map(expandArticle);
-        setStatus()
+        removeDefault();
+        setStatus();
            
     };
 
@@ -514,6 +524,7 @@ const headerHelpers = function(project){
         scrollToTop();
         postAnimationHandler(resetClosedState, article); 
         visibilityElements.map(contractArticle);
+        addDefault();
         setStatus()
 
     };
