@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
 
@@ -29,10 +36,12 @@ a > svg {
     position: relative;
     top: 0.1em;
     width: 1.5em;
-};
+}
 
 a:focus-visible, button:focus-visible, summary:focus-visible {
-    outline: 1px solid blue;
+    outline: 2px solid blue;
+    
+
     
 }
 
@@ -42,6 +51,10 @@ article:before, main.default:after {
     content: "";
     color: black;
     display: block;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
     grid-area: 1/1/2/2;
     height: 3px;
     width: 100vw;
@@ -55,6 +68,10 @@ article:before {
 article {
     background-color: white;
     color: #494f6a;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
     grid-area: 1/1/2/2;
 
 }
@@ -131,8 +148,8 @@ header {
 
 
 header > div {
-    background: -webkit-gradient(linear,left top, left bottom,from(rgb(219, 226, 236, 0.6)),to(white));
     background: -o-linear-gradient(rgb(219, 226, 236, 0.6),white);
+    background: -webkit-gradient(linear,left top, left bottom,from(rgb(219, 226, 236, 0.6)),to(white));
     background: linear-gradient(rgb(219, 226, 236, 0.6),white);
     -webkit-box-shadow: 0 -5px 5px black;
             box-shadow: 0 -5px 5px black;
@@ -151,6 +168,10 @@ header > div {
     z-index: 1;
     
 
+}
+
+header button {
+    padding: 1rem;
 }
 
 
@@ -210,7 +231,11 @@ li > p {
 
 ol > li  img {
     width: 1rem;
+    -webkit-transition: border-radius 0.75s, -webkit-transform 0.75s;
+    transition: border-radius 0.75s, -webkit-transform 0.75s;
+    -o-transition: border-radius 0.75s, transform 0.75s;
     transition: border-radius 0.75s, transform 0.75s;
+    transition: border-radius 0.75s, transform 0.75s, -webkit-transform 0.75s;
 }
 
 ol > li > button {
@@ -223,6 +248,7 @@ ol, ul {
 }
 
 main {
+    display: -ms-grid;
     display: grid;
 }
 
@@ -290,7 +316,8 @@ summary::webkit-details-marker{
 }
 
 .closed {
-    animation: 1.5s ease-out 0s 1 normal forwards running contractArticle
+    -webkit-animation: 1.5s ease-out 0s 1 normal forwards running contractArticle;
+            animation: 1.5s ease-out 0s 1 normal forwards running contractArticle
 
  }
 
@@ -309,7 +336,9 @@ summary::webkit-details-marker{
 .highlighted  img {
     border: 0.1px solid blue;
     border-radius: 2px;
-    transform: scale(1.5) translateY(-0.3em);
+    -webkit-transform: scale(1.5) translateY(-0.3em);
+        -ms-transform: scale(1.5) translateY(-0.3em);
+            transform: scale(1.5) translateY(-0.3em);
 }
 
 
@@ -318,7 +347,8 @@ summary::webkit-details-marker{
 }
 
 .open {
-    animation: 1.5s linear 0s 1 normal forwards running expandArticle
+    -webkit-animation: 1.5s linear 0s 1 normal forwards running expandArticle;
+            animation: 1.5s linear 0s 1 normal forwards running expandArticle
  }
 
 
@@ -357,7 +387,9 @@ summary::webkit-details-marker{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     margin-top: 0.8rem;
@@ -373,11 +405,13 @@ summary::webkit-details-marker{
 
 
 #about  p {
-    box-shadow: 0px 0px 15px 2px;
+    -webkit-box-shadow: 0px 0px 15px 2px;
+            box-shadow: 0px 0px 15px 2px;
     display: block;
     line-height: 2.5;
    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+       transform: rotate(2deg);
 
 }
 
@@ -394,6 +428,8 @@ summary::webkit-details-marker{
 }
 
 #about > section:last-child {
+    background: -webkit-gradient(linear,left top, left bottom,color-stop(10%, white),color-stop(50%, rgb(219, 226, 236)),color-stop(75%, rgb(219, 226, 236)),to(white));
+    background: -o-linear-gradient(white 10%,rgb(219, 226, 236) 50%,rgb(219, 226, 236) 75%,white);
     background: linear-gradient(white 10%,rgb(219, 226, 236) 50%,rgb(219, 226, 236) 75%,white);
    
 
@@ -493,8 +529,8 @@ summary::webkit-details-marker{
 
 
 #devices #bottom {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgba(128, 128, 128, 0.445)), color-stop(30%, white), to(grey) );
     background: -o-linear-gradient(rgba(128, 128, 128, 0.445) 15%, white 30%, grey );
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgba(128, 128, 128, 0.445)), color-stop(30%, white), to(grey) );
     background: linear-gradient(rgba(128, 128, 128, 0.445) 15%, white 30%, grey );
     border-radius: 0 0 5px 5px;
     height: 14px;
@@ -514,9 +550,14 @@ summary::webkit-details-marker{
  }
 
  #project_details > div > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     gap: 0.25rem;
     padding-top: 0;
  }
@@ -536,7 +577,8 @@ summary::webkit-details-marker{
 #project_tooling button > svg { 
     border: 1px solid;
     border-radius: 100%;
-    box-shadow: 0 0 0.5vmax 0.5vmax;
+    -webkit-box-shadow: 0 0 0.5vmax 0.5vmax;
+            box-shadow: 0 0 0.5vmax 0.5vmax;
     color: #44578e;
     width: min(5rem,10vw);
     
@@ -550,23 +592,53 @@ summary::webkit-details-marker{
 
  
 
- @keyframes contractArticle {
+ @-webkit-keyframes contractArticle {
     0% {
-        transform: translateY(-61vh);
+        -webkit-transform: translateY(-61vh);
+                transform: translateY(-61vh);
     }
 
     100% {
-        transform: translateY(0)
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+    }
+}
+
+ 
+
+ @keyframes contractArticle {
+    0% {
+        -webkit-transform: translateY(-61vh);
+                transform: translateY(-61vh);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes expandArticle {
+    0% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+
+    100% {
+        -webkit-transform: translateY(-61vh);
+                transform: translateY(-61vh);
     }
 }
 
 @keyframes expandArticle {
     0% {
-        transform: translateY(0);
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
     }
 
     100% {
-        transform: translateY(-61vh);
+        -webkit-transform: translateY(-61vh);
+                transform: translateY(-61vh);
     }
 }
 
@@ -574,6 +646,7 @@ summary::webkit-details-marker{
 
  @-webkit-keyframes contractParagraph {
     0% {
+        background: -webkit-gradient(linear,left top, right top,from(#9ba3cc3d),color-stop(10%, white), color-stop(90%, white),to(#dedef4));
         background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         opacity: 1;
         max-height: 100rem;
@@ -596,6 +669,8 @@ summary::webkit-details-marker{
 
  @keyframes contractParagraph {
     0% {
+        background: -webkit-gradient(linear,left top, right top,from(#9ba3cc3d),color-stop(10%, white), color-stop(90%, white),to(#dedef4));
+        background: -o-linear-gradient(left,#9ba3cc3d,white 10%, white 90%,#dedef4);
         background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         opacity: 1;
         max-height: 100rem;
@@ -632,6 +707,7 @@ summary::webkit-details-marker{
     }
 
     100% {
+        background: -webkit-gradient(linear,left top, right top,from(#9ba3cc3d),color-stop(10%, white), color-stop(90%, white),to(#dedef4));
         background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         max-height: 100rem;
         opacity: 1;
@@ -656,6 +732,8 @@ summary::webkit-details-marker{
     }
 
     100% {
+        background: -webkit-gradient(linear,left top, right top,from(#9ba3cc3d),color-stop(10%, white), color-stop(90%, white),to(#dedef4));
+        background: -o-linear-gradient(left,#9ba3cc3d,white 10%, white 90%,#dedef4);
         background: linear-gradient(90deg,#9ba3cc3d,white 10%, white 90%,#dedef4);
         max-height: 100rem;
         opacity: 1;
@@ -765,11 +843,26 @@ summary::webkit-details-marker{
 
     #project_tooling button > svg {
        width: 20px;
-       box-shadow: 0 0 3px 3px;
+       -webkit-box-shadow: 0 0 3px 3px;
+               box-shadow: 0 0 3px 3px;
     }
 }
 
 @media (min-width: 700px){
+    #about nav {
+        max-width: 100%;
+        width: auto;
+    }
+
+    #about p {
+        -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    }
+
+}
+
+@media (min-width: 900px){
     header {
         background-size: 100vw 100px;
     }
@@ -781,10 +874,29 @@ summary::webkit-details-marker{
 
     #about p {
         -webkit-transform: none;
-        transform: none;
+        -ms-transform: none;
+            transform: none;
     }
 
 }
+
+@media (hover: hover) {
+    button:hover, summary:hover {
+        -webkit-transform: skew(-15deg);
+            -ms-transform: skew(-15deg);
+                transform: skew(-15deg)
+        
+    }
+
+    #project_tooling button:hover {
+        -webkit-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+                transform: scale(1.2)
+    }
+
+}
+
+
 
 
 
