@@ -881,12 +881,6 @@ summary::webkit-details-marker{
 }
 
 @media (hover: hover) {
-    button:hover, summary:hover {
-        -webkit-transform: skew(-15deg);
-            -ms-transform: skew(-15deg);
-                transform: skew(-15deg)
-        
-    }
 
     #project_tooling button:hover {
         -webkit-transform: scale(1.2);
